@@ -1,0 +1,7 @@
+<span #top></span>
+<div #Success [innerHTML]="globalSuccessMsg" *ngIf="globalSuccessMsg" class="alert alert-success" tabindex="0"
+  aria-live="polite" aria-atomic="true" style="color: beige; text-decoration: underline;background-color: darkgreen;">
+</div>
+<div #Error [innerHTML]="globalErrorMsg | trustHTML" *ngIf="globalErrorMsg" class="alert alert-danger" tabindex="0"
+  aria-live="polite" aria-atomic="true" style="color: beige; text-decoration: underline;background-color:red">
+</div>

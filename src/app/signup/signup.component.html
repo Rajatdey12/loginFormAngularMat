@@ -1,0 +1,43 @@
+<div class="login-page">
+  <div class="login-box">
+    <img src="assets/chat-illustration-2.svg" />
+    <div class="login-content">
+      <h2><app-global-msg #msg></app-global-msg></h2>
+      <h1>Create an Account</h1>
+      <form [formGroup]="profileForm" (ngSubmit)="signUp(profileForm)" novalidate>
+        <mat-form-field>
+          <mat-label>Enter your email</mat-label>
+          <input class="input" matInput placeholder="email@org.com" type="email" formControlName="email" required>
+          <mat-error *ngIf="email.invalid">
+            Please enter a valid email
+        </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enter your Name</mat-label>
+          <input matInput placeholder="your name" formControlName="name" type="text" required>
+          <mat-error *ngIf="name.invalid">Please enter your Name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enter Password</mat-label>
+          <input matInput placeholder="your password" formControlName="password" type="password" required>
+          <mat-error *ngIf="password.invalid">Please enter your password</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button [disabled]="!profileForm.valid" type="submit" mat-raised-button color="primary">SIGN UP</button>
+      </form>
+      <div>
+        <span>Do you have an account?</span>
+        <a routerLink="/login"> Log in</a>
+      </div>
+    </div>
+  </div>
+</div>

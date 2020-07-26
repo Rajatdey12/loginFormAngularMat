@@ -1,0 +1,28 @@
+<div class="login-page">
+  <div class="login-box">
+    <div class="login-content">
+      <h2><app-global-msg #msg></app-global-msg></h2>
+      <h1>Welcome Back</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+        <mat-form-field>
+          <input class="input" matInput placeholder="email@org.com" type="email" formControlName="userId" required>
+          <mat-error *ngIf="userId.invalid">
+           Please enter your valid user ID
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="your password" formControlName="password" type="password" required>
+          <mat-error *ngIf="password.invalid">
+           Please enter your password
+          </mat-error>
+        </mat-form-field>
+        <button [disabled]="!loginForm.valid" mat-raised-button color="primary">LOG IN</button>
+      </form>
+      <div>
+        <span>Don't have an account?</span>
+        <a routerLink="/signup"> Sign up</a>
+      </div>
+    </div>
+    <img src="assets/chat-illustration-1.svg" />
+  </div>
+</div>
