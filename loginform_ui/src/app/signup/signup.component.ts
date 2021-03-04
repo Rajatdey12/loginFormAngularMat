@@ -1,6 +1,7 @@
 import { ApiService } from './../services/api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -20,19 +21,22 @@ export class SignupComponent implements OnInit {
     password: ['',Validators.required]
   });
 
-  constructor(private auth: ApiService, private fb: FormBuilder) {}
+  constructor(private auth: ApiService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {}
 
 
   signUp(profileForm){
     this.auth.signUp(profileForm.value).subscribe(response =>{
-      if(response.error){
-        this.msg.showErrorMsg("error occured!!!!");
+      if(response.status!=201){
+        this.msg.showErrorMsg("Couldn't Sign Up User");
       }
       else{
-        this.msg.showSuccessMsg("Logged In successfully!!!");
+        this.msg.showSuccessMsg(response.error.text);
       }
     })
+    setTimeout (() => {
+      this.router.navigate(['/login']);
+   }, 3000);
   }
 }

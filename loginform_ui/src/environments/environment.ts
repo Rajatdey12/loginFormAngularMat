@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appId: '',
-  messageUrl: 'http//localhost:8080/'
+  messageUrl: "http://localhost:5000/"
 };
 
 /*
